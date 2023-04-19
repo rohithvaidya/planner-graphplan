@@ -1,0 +1,21 @@
+(define (problem blocksproblem)
+
+    (:domain blocksdomain )
+    
+    (:objects
+        a b c
+    )
+
+    (:init
+        (ontable c)
+	  (on b c)
+	  (on a b)
+        (clear a)
+    )
+    (:goal (and
+		(on c b)
+		(on b a)
+		(ontable a)
+	     )
+; plan would be (stackdown a), (stackdown b), (stackup b a), (stackup c b)
+)

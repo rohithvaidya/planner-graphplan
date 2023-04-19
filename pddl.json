@@ -1,0 +1,36 @@
+{
+    "goal_state": "G",
+    "actions": [
+      {
+        "name": "action1",
+        "preconditions": ["A", "B"],
+        "effects": ["C"],
+        "is_negated": false
+      },
+      {
+        "name": "action2",
+        "preconditions": ["C"],
+        "effects": ["D"],
+        "is_negated": false
+      },
+      {
+        "name": "action3",
+        "preconditions": ["D"],
+        "effects": ["G"],
+        "is_negated": false
+      },
+      {
+        "name": "action4",
+        "preconditions": ["E"],
+        "effects": ["F"],
+        "is_negated": false
+      },
+      {
+        "name": "action5",
+        "preconditions": ["F"],
+        "effects": ["G"],
+        "is_negated": false
+      }
+    ],
+    "initial_state": ["A", "B", "E"]
+  }

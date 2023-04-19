@@ -1,0 +1,30 @@
+{"comment0" : "This is one possible json equivalent of the cake-pddl file",
+"comment" : "Just one example. NB: The params for the actions, and pre and eff predicates are all dummy.",
+
+"predicates" : [
+		{"name": "havecake", "params": ["c"]},
+	    	{"name": "eatencake", "params":  ["c"]}
+    ],
+
+"actions" : 
+    [
+	{ "name" : "eat", 
+	  "params" : ["c"],
+	  "pre" : [ {"sign": "p", "name": "havecake", "params": ["c"]} ],
+	  "eff" : [ {"sign": "p", "name": "eatencake","params": ["c"]}, 
+		    {"sign": "n", "name": "havecake", "params": ["c"]} ]
+	},
+    
+	{ "name" : "bake" ,
+	  "params": ["c"],
+	  "pre" : [ {"sign": "n", "name": "havecake", "params": ["c"] }],
+	  "eff" : [ {"sign": "p", "name": "havecake", "params": ["c"] }]
+	}
+   ],
+
+ "objects" : [ "cake1" ],
+
+ "initial" : [ {"sign": "p", "name" : "have", "params": ["cake1"]} ],
+
+ "goal"    : [ "p have_A", "p eaten_A" ]
+}

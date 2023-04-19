@@ -1,0 +1,46 @@
+; PDDL splits the specification into two parts:
+;     domain file: This contains all the generic stuff
+;     problem file: This contains all the situation specific stuff
+;----- the below is the domain file content for the cake problem
+(define (domain cakedomain)
+    
+    (:predicates
+	    (havecake ?c)
+	    (eatencake ?c)
+    )
+    
+    (:action eat
+        :parameters (?c)
+
+        :precondition 
+	        (havecake ?c)
+
+        :effect 
+            (and 
+                (eatencake ?c)
+                (not (havecake ?c))
+            )
+    )
+
+    (:action bake
+        :parameters (?c)
+
+        :precondition 
+            (not (havecake ?c))
+        :effect 
+	        (havecake ?c)
+    )
+)
+;------------------ The below is to be put in a separate problem specificaiton file
+(define (problem cakeproblem1)
+
+    (:domain cakedomain )
+    
+    (:objects
+        cake1
+    )
+
+    (:init
+        (havecake cake1)
+    )
+)

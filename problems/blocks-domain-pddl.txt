@@ -1,0 +1,42 @@
+(define (domain blocksdomain)
+    
+; simplified problem without any gripper etc.
+; you can either put a block on the top of a stack down onto the table
+;            or  put something directly sitting on the table onto the top of a block on top of a stack
+;	The predicate clear inditates that a block has nothin on top of it.
+;	The predicate ontable indicates that a block is sitting directly on the table.
+ 
+    (:predicates
+	    (clear ?b)
+	    (on ?a  ?b)
+          (ontable ?a)
+    )
+    
+    (:action stackup
+        :parameters (?a ?b)
+
+        :precondition 
+	        (and (ontable ?a) (clear ?a) (clear ?b))
+
+        :effect 
+            (and 
+                (on ?a ?b)
+		    (not (ontable ?a))
+                (not (clear ?b))
+            )
+    )
+
+    (:action stackdown 
+        :parameters (?a ?b)
+
+        :precondition 
+	        (and (clear ?a) (on ?a ?b))
+
+        :effect 
+            (and 
+                (not (on ?a ?b))
+		    (clear ?b)
+                (ontable ?a)
+            )
+    )
+)

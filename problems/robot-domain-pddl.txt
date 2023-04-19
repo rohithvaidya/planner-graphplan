@@ -1,0 +1,22 @@
+(define (domain robotdomain)
+    
+    (:predicates
+	    (at ?r ?l)
+	    (robot ?r)
+	    (loc ?l)
+	    (adj ?l ?m)
+    )
+    
+    (:action move
+        :parameters (?r ?l ?m)
+
+        :precondition 
+	        (and (robot ?r) (loc ?l) (loc ?m) (at ?r ?l) (adj ?l ?m))
+
+        :effect 
+            (and 
+                (at ?r ?m)
+		        (not (at ?r ?l))
+            )
+    )
+)

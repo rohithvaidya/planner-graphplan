@@ -1,0 +1,20 @@
+(define (problem robotproblem)
+
+    (:domain robotdomain )
+    
+    (:objects
+        rob l1 l2 l3 l4 
+    )
+; rob is a robot  and the locations are arranged in a grid:
+;              l1  l2 
+;              l3  l4
+    (:init
+        (robot rob)
+	    (loc l1) (loc l2) (loc l3) (loc l4)
+        (at rob l1)
+        (adj l1 l2) (adj l1 l3) (adj l2 l4) (adj l3 l4)
+    )
+    (:goal  (at rob l4)
+    )
+; note that multiple plans aare possible
+)
